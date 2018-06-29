@@ -1,5 +1,6 @@
 import socket
 import sys
+import threading
 dic="abcdefghijklmnopqrstuvwxyz1234567890,.;:{}[]+*!#$%&/()=?abcdefghijklmnopqrstuvwxyz1234567890,.;:{}[]+*!#$%&/()=?abcdefghijklmnopqrstuvwxyz1234567890,.;:{}[]+*!#$%&/()=?"
 
 def enviar(ip,puertodestino,msg):
@@ -9,15 +10,15 @@ def enviar(ip,puertodestino,msg):
 
 
 
-def recibir(ip,puertoorigen):
+def recibir():
     sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
-    sock.bind((ip, puertoorigen))
+    sock.bind(("", puertoorigen))
 
-
-    data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-    f=str(data)
-    print desencriptar(f,clave)
+    while True:
+          data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+          f=str(data)
+          print "                             ",desencriptar(f,clave)
 
 
 
@@ -51,21 +52,21 @@ def desencriptar(texto,clave):
     f="".join(l)
     return f
 
-ipclear=raw_input("ip: ")
-ip="127.0.0.1"
+ip=raw_input("ip: ")
+#ip="127.0.0.1"
 puertoorigen=int(raw_input("puerto de origen: "))
 puertodestino=int(raw_input("puerto de destino: "))
 clave=int(raw_input("Clave: "))
 
 
 
-msg=raw_input("inicio: ")
-msg=encriptar(msg,clave)
-enviar(ip,puertodestino,msg)
+#msg=raw_input("inicio: ")
+#msg=encriptar(msg,clave)
+#enviar(ip,puertodestino,msg)
 
+threading.Thread(target=recibir).start()
 
 while True:
-      recibir(ip,puertoorigen)
       msg=raw_input("> ")
       msg=encriptar(msg,clave)
       enviar(ip,puertodestino,msg)
