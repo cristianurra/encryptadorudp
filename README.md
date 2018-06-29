@@ -1,3 +1,0 @@
-# encryptadorudp
-AVANZEN LA WEAITA 
-
