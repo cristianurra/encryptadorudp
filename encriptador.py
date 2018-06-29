@@ -61,7 +61,7 @@ ip=raw_input("ip: ")
 #ip="127.0.0.1"
 puertoorigen=int(raw_input("puerto de origen: "))
 puertodestino=int(raw_input("puerto de destino: "))
-cons=len(puertoorigen)
+cons=len(str(puertoorigen))
 clave=cons
 
 
