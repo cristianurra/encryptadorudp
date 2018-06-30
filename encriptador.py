@@ -3,7 +3,18 @@ import sys
 import threading
 
 
-claveacceso="klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?" ##El mensaje solo podra ser descifrado por quien tenga la "claveacceso"
+claveacceso="klmnEowxCDFGHsgrabcdefijB789[W0,.;:{}XYZ15+*!#$%6hIJRSTKLUpqyzA]&/(tuvVMNOPQ234)=?" ##El mensaje solo podra ser descifrado por quien tenga la "claveacceso"
+
+
+
+n=0
+while n<7:
+      claveacceso=claveacceso+claveacceso
+      n+=1
+      
+
+
+
 
 
 dic=claveacceso
@@ -19,11 +30,12 @@ def recibir():
     sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
     sock.bind(("", puertoorigen))
-
+    usuariodestinatario=""
     while True:
           data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
           f=str(data)
-          print "                             ",desencriptar(f,clave)
+          tx=desencriptar(f,clave)
+          print ip,":",tx
 
 
 
@@ -57,23 +69,19 @@ def desencriptar(texto,clave):
     f="".join(l)
     return f
 
-ip=raw_input("ip: ")
-#ip="127.0.0.1"
-puertoorigen=int(raw_input("puerto de origen: "))
-puertodestino=int(raw_input("puerto de destino: "))
-cons=len(str(puertoorigen))
-clave=cons
+print "==========Proyecto redes de computadores==========="
+print "=====================Elo322========================"
+print "Datos de destinatario: ip_destino puerto_origen puerto_destino"
+accion=raw_input(">>> ")
+datass=accion.split()
+ip=datass[0]
+puertoorigen=int(datass[1])
+puertodestino=int(datass[2])
+clave=len(str(puertoorigen))
 
-
-
-#msg=raw_input("inicio: ")
-#msg=encriptar(msg,clave)
-#enviar(ip,puertodestino,msg)
 
 threading.Thread(target=recibir).start()
-
 while True:
-      msg=raw_input("> ")  
+      msg=raw_input("")  
       msg=encriptar(msg,clave)
       enviar(ip,puertodestino,msg)
-
