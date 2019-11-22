@@ -63,6 +63,8 @@ def desencriptar(texto,clave):            ##Funcion desencriptado, proceso inver
 
 print "==========Proyecto redes de computadores==========="
 print "=====================Elo322========================"
+print "Autor: Cristhian Urra Aldunate"
+print "Sientase libre de compartir, modificar y editar.
 print "Datos de destinatario: ip_destino puerto_origen puerto_destino"  
 accion=raw_input(">>> ")   #Aqui el usuario ingresa los valores solicitados, separados por un espacio.
 datass=accion.split()
